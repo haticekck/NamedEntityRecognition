@@ -1,0 +1,43 @@
+================================================================================
+TÜRKÇE NER PROJESİ - SONUÇ RAPORU
+================================================================================
+
+Dataset: TWNERTC
+Toplam Model: 2
+
+MODEL PERFORMANSLARI
+--------------------------------------------------------------------------------
+Model                 Loss   Accuracy  Precision     Recall         F1
+----------------------------------------------------------------------
+mbert               0.2177     0.9204     0.7082     0.6983     0.7032
+berturk             0.2214     0.9189     0.6977     0.6897     0.6937
+
+EN İYİ MODEL
+--------------------------------------------------------------------------------
+Model:     mbert
+F1 Score:  0.7032
+Accuracy:  0.9204
+Precision: 0.7082
+Recall:    0.6983
+Loss:      0.2177
+
+İSTATİSTİKLER
+--------------------------------------------------------------------------------
+Ortalama F1:        0.6985
+Ortalama Accuracy:  0.9196
+Ortalama Precision: 0.7030
+Ortalama Recall:    0.6940
+
+En yüksek F1:       0.7032 (mbert)
+En düşük F1:        0.6937 (berturk)
+
+ÖNERİLER
+--------------------------------------------------------------------------------
+• Multilingual modeller (mBERT, XLM-R) beklenmedik şekilde daha iyi performans gösterdi
+  Multilingual avg:    0.7032
+  Türkçe modeller avg: 0.6937
+
+• Production için önerilen model: mbert
+• Bu model 70.32% F1 score ile en iyi performansı gösterdi
+
+================================================================================
