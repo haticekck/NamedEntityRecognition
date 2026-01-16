@@ -71,7 +71,7 @@ def compute_metrics(eval_pred, id2label):
 
 
 def train_model(model_name, model_path, train_df, val_df, label2id, id2label, 
-                output_dir, max_length=128, batch_size=16, epochs=5, 
+                output_dir, max_length=64, batch_size=32, epochs=3, 
                 learning_rate=2e-5):
     print("\n" + "="*70)
     print(f"MODEL EĞİTİMİ: {model_name} ({model_path})")

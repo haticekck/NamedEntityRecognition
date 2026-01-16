@@ -119,17 +119,17 @@ class TWNERTCLoader:
         
         # 1. Domain dağılımı
         self.data['domain'].value_counts().plot(kind='bar', ax=axes[0, 0])
-        axes[0, 0].set_title('Domain Dağılımı')
+        axes[0, 0].set_title('Domain Distribution')
         axes[0, 0].set_xlabel('Domain')
-        axes[0, 0].set_ylabel('Örnek Sayısı')
+        axes[0, 0].set_ylabel('Sample Count')
         
         # 2. Cümle uzunluğu dağılımı
         token_lengths = self.data['tokens'].apply(len)
         axes[0, 1].hist(token_lengths, bins=50, edgecolor='black')
-        axes[0, 1].set_title('Cümle Uzunluğu Dağılımı')
-        axes[0, 1].set_xlabel('Token Sayısı')
-        axes[0, 1].set_ylabel('Frekans')
-        axes[0, 1].axvline(token_lengths.mean(), color='r', linestyle='--', label='Ortalama')
+        axes[0, 1].set_title('Sentence Length Distribution')
+        axes[0, 1].set_xlabel('Token Count')
+        axes[0, 1].set_ylabel('Frequency')
+        axes[0, 1].axvline(token_lengths.mean(), color='r', linestyle='--', label='Mean')
         axes[0, 1].legend()
         
         # 3. Entity tipi dağılımı
@@ -140,8 +140,8 @@ class TWNERTCLoader:
         
         entities_df = pd.DataFrame.from_dict(entity_type_counts, orient='index', columns=['count'])
         entities_df.sort_values('count', ascending=True).plot(kind='barh', ax=axes[1, 0], legend=False)
-        axes[1, 0].set_title('Entity Tipi Dağılımı')
-        axes[1, 0].set_xlabel('Sayı')
+        axes[1, 0].set_title('Entity Type Distribution')
+        axes[1, 0].set_xlabel('Count')
         
         # 4. Domain bazlı entity yoğunluğu
         domain_entity_density = {}
@@ -153,9 +153,9 @@ class TWNERTCLoader:
             domain_entity_density[domain] = (entity_count / total_tokens) * 100
         
         pd.Series(domain_entity_density).plot(kind='bar', ax=axes[1, 1])
-        axes[1, 1].set_title('Domain Bazlı Entity Yoğunluğu (%)')
+        axes[1, 1].set_title('Domain-Based Entity Ratio (%)')
         axes[1, 1].set_xlabel('Domain')
-        axes[1, 1].set_ylabel('Entity/Token Oranı (%)')
+        axes[1, 1].set_ylabel('Entity/Token Ratio (%)')
         
         plt.tight_layout()
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
